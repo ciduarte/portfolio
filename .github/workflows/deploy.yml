@@ -27,7 +27,7 @@ jobs:
       - run: npm run check
       - run: npm run build
         env:
-          BASE_PATH: /${{ github.event.repository.name }}/
+          BASE_PATH: /
           VITE_CONTACT_ENDPOINT: ${{ vars.VITE_CONTACT_ENDPOINT }}
       - uses: actions/configure-pages@v5
         with:
