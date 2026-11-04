@@ -20,7 +20,7 @@ export const furnitureProjects = [
   {
     slug: "good-move-floating-shelves",
     title: "Custom Floating Shelves",
-    role: "Design, Fabricate, Install",
+    role: "Design, Fabrication, Installation",
     client: "Good Move",
     cover: "/assets/projects/good-move-floating-shelves/RuqniP7HTyi1ASs3bIGqA2Ljk.webp",
     paragraphs: [
@@ -106,7 +106,7 @@ export const interiorProjects = [
     role: "Design, Fabrication, Installation",
     location: "Brooklyn, NY",
     year: "2025",
-    cover: null,
+    cover: "/assets/projects/greenpoint-railroad-kitchen/greenpoint-railroad-kitchen-cover.jpg",
     imageStatus: "Project photography coming soon",
     paragraphs: [
       "In a small Greenpoint railroad apartment, limited counter space made cooking difficult, while cool-toned cabinets and bright overhead lighting left the kitchen feeling unsettled.",
@@ -115,7 +115,16 @@ export const interiorProjects = [
       "I chose pale plywood for the island and a champagne-toned cabinet finish to bring brighter, warmer tones into the room without replacing the existing cabinetry. A black freestanding cabinet extends the counter and creates a dedicated coffee zone near the sink.",
       "Curved pendant shades soften the room’s straight lines, while warm mirrored bulbs reduce direct glare when seated. A teal woven runner adds color and texture and connects the new material palette across the length of the kitchen.",
     ],
-    gallery: [],
+    gallery: [
+      "concept-ff-and-e-preview.png",
+      "plan-and-material-palette.png",
+      "before-and-after.png",
+    ],
+    galleryCaptions: {
+      "concept-ff-and-e-preview.png": "Concept / FF&E Preview",
+      "plan-and-material-palette.png": "Plan and Material Palette",
+      "before-and-after.png": "Before and After",
+    },
   },
 ];
 

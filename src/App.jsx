@@ -51,11 +51,17 @@ function Footer() {
   return <footer><a className="footer-instagram" href="https://www.instagram.com/carlzduarte" target="_blank" rel="noreferrer">Instagram</a><span>·</span><Link href="/about" className="footer-name">Carla Inacio Duarte</Link><span>·</span><a className="footer-linkedin" href="https://www.linkedin.com/in/carla1duarte" target="_blank" rel="noreferrer">LinkedIn</a></footer>;
 }
 
+function HomeProjectSection({ title, projects, projectHref, headingAs = "h2" }) {
+  const Heading = headingAs;
+  return <section className="home-index home-projects reveal"><Heading className="index-label">{title}</Heading><div className="furniture-list">{projects.map((project) => <Link href={projectHref(project)} className="furniture-row" key={project.slug}><img src={assetFor(project.cover)} alt="" /><span>{project.title}</span></Link>)}</div></section>;
+}
+
 function Home() {
   return <>
     <section className="intro reveal"><img src={assetFor("/assets/images/LBz71fj98oepR7MFwTg7q5VikU.avif")} alt="Portrait of Carla Inacio Duarte" /><div className="intro-copy"><p>based in Brooklyn, NY</p><p>uncovering how many pies my fingers can fit into</p><p>stay tuned</p><p>—</p></div></section>
     <section className="home-contact reveal"><p>want to work together? email <a href="mailto:cinacioduarte@gmail.com">cinacioduarte@gmail.com</a></p></section>
-    <section className="home-index home-furniture reveal"><h1 className="index-label">Recent Furniture Projects</h1><div className="furniture-list">{furnitureProjects.map((project) => <Link href={`/furniture/furniture-projects/${project.slug}`} className="furniture-row" key={project.slug}><img src={assetFor(project.cover)} alt="" /><span>{project.title}</span></Link>)}</div></section>
+    <HomeProjectSection title="Recent Interior Projects" projects={interiorProjects} projectHref={(project) => `/interiors/${project.slug}`} headingAs="h1" />
+    <HomeProjectSection title="Recent Furniture Projects" projects={furnitureProjects} projectHref={(project) => `/furniture/furniture-projects/${project.slug}`} />
     <section className="home-index home-photography reveal"><h2 className="index-label">Recent Film Photography</h2><div className="photo-collections">{recentPhotography.map(([title, rows]) => <Link href={`/35mm#${sectionIdFor(title)}`} className="photo-collection" key={title}><span className="collection-title">{title}</span><div className="photo-rows">{rows.map((row, index) => <div className="photo-row" key={index}>{row.map((image) => <img src={assetFor(`/assets/images/${image}.avif`)} alt={`${title} film photograph`} key={image} />)}</div>)}</div></Link>)}</div></section>
   </>;
 }

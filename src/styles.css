@@ -29,7 +29,7 @@ main { margin-left: 292px; width: calc(100% - 312px); min-height: 75vh; padding-
 .home-contact a:hover, .home-contact a:focus-visible { color: var(--green); }
 .home-index { display: grid; grid-template-columns: 262px 457px; gap: 20px; width: 739px; }
 .index-label { margin: 0; color: var(--red); font: 400 14px/1.2 "Space Grotesk", sans-serif; text-transform: uppercase; }
-.home-furniture { margin-top: 48px; }
+.home-projects { margin-top: 48px; }
 .furniture-list { display: flex; flex-direction: column; gap: 20px; }
 .furniture-row { display: grid; grid-template-columns: 98px 1fr; gap: 10px; min-height: 98px; color: var(--red); font: 500 18px/1.2 "Space Grotesk", sans-serif; text-transform: uppercase; transition: color .2s ease; }
 .furniture-row:hover, .furniture-row:focus-visible { color: var(--yellow); }
@@ -143,7 +143,7 @@ footer .footer-linkedin:hover, footer .footer-linkedin:focus-visible { color: va
   .home-index { display: block; width: 100%; }
   .home-contact { margin-top: 48px; }
   .home-contact p { font-size: 12px; }
-  .home-furniture { margin-top: 48px; }
+  .home-projects { margin-top: 48px; }
   .index-label { margin-bottom: 12px; }
   .furniture-list { gap: 20px; }
   .furniture-row { grid-template-columns: 98px minmax(0, 1fr); }
