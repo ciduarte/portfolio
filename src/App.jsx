@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
-import { furnitureProjects, photographyCollections } from "./data";
+import { furnitureProjects, interiorProjects, photographyCollections } from "./data";
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
-const navItems = [["Home", "/"], ["Design & Dev", "/design-dev"], ["Furniture", "/furniture"], ["Interiors", "/projects"], ["Photography", "/35mm"]];
+const navItems = [["Home", "/"], ["Design & Dev", "/design-dev"], ["Furniture", "/furniture"], ["Interiors", "/interiors"], ["Photography", "/35mm"]];
 
 const recentPhotography = [
   ["Vietnam '26", [["ZjzF3mtMv4dMPrddvFxzVBjFQo", "9ENLrM6gzcP56u6GaHv4k5kDCU8", "i4oMSXKWesJc6brr8UVsMb60tk", "0IaI8gQ0uNaB9f75imhGpK7Zy5I", "M29ovJNaCArKNQIOH7dzZXbfE", "pmUOaCKOvW2vvSdTL2TU7J3FfsA"]]],
@@ -63,6 +63,10 @@ function FurniturePage() {
   return <section className="listing-page reveal"><h1 className="page-eyebrow red">Furniture Projects</h1><div className="listing-grid">{furnitureProjects.map((project) => <Link className="listing-card" href={`/furniture/furniture-projects/${project.slug}`} key={project.slug}><img src={assetFor(project.cover)} alt={`${project.title} project`} /><h2>{project.title}</h2></Link>)}</div></section>;
 }
 
+function InteriorsPage() {
+  return <section className="listing-page reveal"><h1 className="page-eyebrow red">Interior Projects</h1><div className="listing-grid">{interiorProjects.map((project) => <Link className="listing-card" href={`/interiors/${project.slug}`} key={project.slug}>{project.cover ? <img src={assetFor(project.cover)} alt={`${project.title} project`} /> : <div className="listing-card-placeholder" role="img" aria-label={`${project.title}: ${project.imageStatus}`}><span>{project.imageStatus}</span></div>}<h2>{project.title}</h2></Link>)}</div></section>;
+}
+
 function ProjectStoryMedia({ media, directory }) {
   if (media.type === "comparison") {
     return <div className="project-story-media story-comparison" role="group" aria-label={media.label}>{media.items.map((item) => <figure key={item.image}><img src={`${directory}/${item.image}`} alt={item.alt} loading="lazy" /><figcaption>{item.caption}</figcaption></figure>)}</div>;
@@ -89,11 +93,15 @@ function ImageLightbox({ images, selected, setSelected, label }) {
   return <div className="lightbox" role="dialog" aria-modal="true" aria-label={label} onMouseDown={(event) => event.target === event.currentTarget && setSelected(null)}><button className="lightbox-close" onClick={() => setSelected(null)} aria-label="Close image gallery">×</button><button className="lightbox-prev" onClick={() => setSelected((selected - 1 + images.length) % images.length)} aria-label="Previous image">‹</button><div className="lightbox-stage"><img src={current.src} alt={current.alt} /><div className="lightbox-meta"><p className="lightbox-caption">{current.caption || ""}</p><span className="lightbox-counter" aria-live="polite">{selected + 1} / {images.length}</span></div></div><button className="lightbox-next" onClick={() => setSelected((selected + 1) % images.length)} aria-label="Next image">›</button></div>;
 }
 
-function ProjectDetail({ project }) {
+function ProjectDetail({ project, collection = "furniture" }) {
   const [selected, setSelected] = useState(null);
-  const directory = assetFor(`/assets/projects/${project.slug}`);
-  const galleryImages = project.gallery.map((image, index) => ({ src: `${directory}/${image}`, alt: `${project.title} process and detail ${index + 1}`, caption: project.galleryCaptions?.[image] || "" }));
-  return <><article className="project-detail reveal"><Link href="/furniture" className="back-link">‹ All Furniture Projects</Link><aside className="project-meta"><div className="project-meta-field"><span>Project</span><h1>{project.title}</h1></div><div className="project-meta-field"><span>Role</span><p>{project.role}</p></div>{project.client && <div className="project-meta-field"><span>Client</span><p>{project.client}</p></div>}</aside><div className="project-body"><img className="project-hero" src={`${directory}/${project.cover.split('/').pop()}`} alt={`${project.title} finished project`} /><div className="project-copy">{project.paragraphs.map((paragraph, index) => { const media = project.storyMedia?.find((item) => item.afterParagraph === index); return <div className="project-story-block" key={index}><p>{paragraph}</p>{media && <ProjectStoryMedia media={media} directory={directory} />}</div>; })}</div><div className="project-gallery">{galleryImages.map((image, index) => <button type="button" onClick={() => setSelected(index)} aria-label={`Open image ${index + 1} of ${galleryImages.length}`} key={image.src}><img src={image.src} alt={image.alt} loading="lazy" /></button>)}</div></div></article><ImageLightbox images={galleryImages} selected={selected} setSelected={setSelected} label={`${project.title} image gallery`} /></>;
+  const directory = assetFor(`/assets/projects/${project.assetSlug || project.slug}`);
+  const galleryImages = (project.gallery || []).map((image, index) => ({ src: `${directory}/${image}`, alt: `${project.title} process and detail ${index + 1}`, caption: project.galleryCaptions?.[image] || "" }));
+  const isInterior = collection === "interiors";
+  const backHref = isInterior ? "/interiors" : "/furniture";
+  const backLabel = isInterior ? "All Interior Projects" : "All Furniture Projects";
+  const hero = project.cover ? `${directory}/${project.cover.split('/').pop()}` : null;
+  return <><article className="project-detail reveal"><Link href={backHref} className="back-link">‹ {backLabel}</Link><aside className="project-meta"><div className="project-meta-field"><span>Project</span><h1>{project.title}</h1></div>{project.projectType && <div className="project-meta-field"><span>Project Type</span><p>{project.projectType}</p></div>}<div className="project-meta-field"><span>Role</span><p>{project.role}</p></div>{project.client && <div className="project-meta-field"><span>Client</span><p>{project.client}</p></div>}{project.location && <div className="project-meta-field"><span>Location</span><p>{project.location}</p></div>}{project.year && <div className="project-meta-field"><span>Year</span><p>{project.year}</p></div>}</aside><div className="project-body">{hero ? <img className="project-hero" src={hero} alt={`${project.title} finished project`} /> : <div className="project-hero-placeholder"><span>{project.imageStatus}</span></div>}<div className="project-copy">{project.paragraphs.map((paragraph, index) => { const media = project.storyMedia?.find((item) => item.afterParagraph === index); return <div className="project-story-block" key={index}><p>{paragraph}</p>{media && <ProjectStoryMedia media={media} directory={directory} />}</div>; })}</div>{galleryImages.length > 0 && <div className="project-gallery">{galleryImages.map((image, index) => <button type="button" onClick={() => setSelected(index)} aria-label={`Open image ${index + 1} of ${galleryImages.length}`} key={image.src}><img src={image.src} alt={image.alt} loading="lazy" /></button>)}</div>}</div></article><ImageLightbox images={galleryImages} selected={selected} setSelected={setSelected} label={`${project.title} image gallery`} /></>;
 }
 
 function PhotographyPage() {
@@ -135,13 +143,15 @@ function NotFound() { return <section className="not-found reveal"><h1>Page not 
 function resolvePage(pathname) {
   if (pathname === "/") return { page: <Home />, title: "Carla Inacio Duarte" };
   if (pathname === "/design-dev") return { page: <Placeholder title="Web Design & Dev" />, title: "Web Design & Dev" };
-  if (pathname === "/projects") return { page: <Placeholder title="Interior Projects" />, title: "Interior Projects" };
+  if (pathname === "/interiors") return { page: <InteriorsPage />, title: "Interior Projects" };
   if (pathname === "/furniture") return { page: <FurniturePage />, title: "Furniture Projects" };
   if (pathname === "/35mm") return { page: <PhotographyPage />, title: "35mm Film Photography" };
   if (pathname === "/about") return { page: <AboutPage />, title: "About" };
   if (pathname === "/contact") return { page: <ContactPage />, title: "Contact" };
   const detail = pathname.match(/^\/furniture\/furniture-projects\/([^/]+)\/?$/);
   if (detail) { const project = furnitureProjects.find((item) => item.slug === detail[1]); if (project) return { page: <ProjectDetail project={project} />, title: project.title }; }
+  const interiorDetail = pathname.match(/^\/interiors\/([^/]+)\/?$/);
+  if (interiorDetail) { const project = interiorProjects.find((item) => item.slug === interiorDetail[1]); if (project) return { page: <ProjectDetail project={project} collection="interiors" />, title: project.title }; }
   return { page: <NotFound />, title: "Page not found", notFound: true };
 }
 

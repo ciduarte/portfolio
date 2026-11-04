@@ -1,3 +1,21 @@
+const goodMoveStoryMedia = [
+  {
+    afterParagraph: 0,
+    type: "comparison",
+    label: "Existing space and client inspiration",
+    items: [
+      { image: "4UhlVx3hMzMtX9JJqbh4H4GFpfM.webp", alt: "The Good Move lobby wall before the floating shelves were installed", caption: "Existing Space" },
+      { image: "bFvFs2rHjAY6zewVzr5tgdvX8.webp", alt: "Client inspiration showing shallow display shelves filled with books", caption: "Client Inspiration" },
+    ],
+  },
+  { afterParagraph: 1, type: "full", variant: "elevation", image: "3SKmHAjo15gYtT9vFTrmbiAzDU-large.png", alt: "West elevation drawing showing the four shelves beside the lobby door and bench" },
+  { afterParagraph: 2, type: "full", variant: "profile", image: "ulwZS9TQGT2zoISNYUwWnmGYp0.webp", alt: "Rendering of the long shelf profile with curved ends and a raised front lip" },
+];
+
+const goodMoveGallery = [
+  "qbnn1L1DUDBL5QD387SdNkw8bMU.webp", "rc5bZarsrOv6bFB1f3bvYNhPA.webp", "nmo0ts4ID5qWeG57RLWU7kipt6Y.webp", "HENl4mBTcY5cS2MAXCMbB33hS4.webp", "ZDFEKQPBzh0KFJjufvgD22X9sb4.webp", "PPqZoOH9pyClt04bcZv4IPm1QXo.webp", "jGWmX95KXSQCkDJahakBPVbsI.webp", "n7uCTDhPPAbCRCO2szWdZ9Ki36U.webp", "zwkxyxKYbM4U5Agk4jxvZO6N0uc.webp", "IUTPUg3FzbE8xpRet7Hp8Es0.webp", "Gzx1zeyoYh72qsY5YfI4S8ZED2E.webp", "D1RX8xs6EVg4vIdVMqn4q00XQV8.webp", "rhF60RD37Ff2mxcMr0wbUYfHedc.webp", "RuqniP7HTyi1ASs3bIGqA2Ljk.webp", "o7pNsABLYQNuivwyx4CztJyZWU.webp", "AgcScGABPCbh0hMa4eu1m7WpxDA.webp", "GVl1E5TwQu6vWlbZNbaO6P0sM.webp", "zjZA9ufh4497ioV8Yqq2eV8.avif", "nJqbNOB3n379GdrTYizLPKo.webp", "b6VlralI9Wgykbm77IQm9CA9tQ.webp",
+];
+
 export const furnitureProjects = [
   {
     slug: "good-move-floating-shelves",
@@ -13,22 +31,8 @@ export const furnitureProjects = [
       "During installation, I fitted the shelves to the wall and sanded areas that prevented them from sitting closely against it. After mounting, I caulked the remaining small gaps and touched up the paint to create a continuous transition between shelf and wall. Those final adjustments were essential to achieving the quiet, built-in appearance I wanted.",
       "The finished shelves give the lobby a dedicated place for books about movement, dance, and somatic practice. Their color and profile allow them to recede into the room, keeping the books—and the conversations they might prompt—as the focus.",
     ],
-    storyMedia: [
-      {
-        afterParagraph: 0,
-        type: "comparison",
-        label: "Existing space and client inspiration",
-        items: [
-          { image: "4UhlVx3hMzMtX9JJqbh4H4GFpfM.webp", alt: "The Good Move lobby wall before the floating shelves were installed", caption: "Existing Space" },
-          { image: "bFvFs2rHjAY6zewVzr5tgdvX8.webp", alt: "Client inspiration showing shallow display shelves filled with books", caption: "Client Inspiration" },
-        ],
-      },
-      { afterParagraph: 1, type: "full", variant: "elevation", image: "3SKmHAjo15gYtT9vFTrmbiAzDU-large.png", alt: "West elevation drawing showing the four shelves beside the lobby door and bench" },
-      { afterParagraph: 2, type: "full", variant: "profile", image: "ulwZS9TQGT2zoISNYUwWnmGYp0.webp", alt: "Rendering of the long shelf profile with curved ends and a raised front lip" },
-    ],
-    gallery: [
-      "qbnn1L1DUDBL5QD387SdNkw8bMU.webp", "rc5bZarsrOv6bFB1f3bvYNhPA.webp", "nmo0ts4ID5qWeG57RLWU7kipt6Y.webp", "HENl4mBTcY5cS2MAXCMbB33hS4.webp", "ZDFEKQPBzh0KFJjufvgD22X9sb4.webp", "PPqZoOH9pyClt04bcZv4IPm1QXo.webp", "jGWmX95KXSQCkDJahakBPVbsI.webp", "n7uCTDhPPAbCRCO2szWdZ9Ki36U.webp", "zwkxyxKYbM4U5Agk4jxvZO6N0uc.webp", "IUTPUg3FzbE8xpRet7Hp8Es0.webp", "Gzx1zeyoYh72qsY5YfI4S8ZED2E.webp", "D1RX8xs6EVg4vIdVMqn4q00XQV8.webp", "rhF60RD37Ff2mxcMr0wbUYfHedc.webp", "RuqniP7HTyi1ASs3bIGqA2Ljk.webp", "o7pNsABLYQNuivwyx4CztJyZWU.webp", "AgcScGABPCbh0hMa4eu1m7WpxDA.webp", "GVl1E5TwQu6vWlbZNbaO6P0sM.webp", "zjZA9ufh4497ioV8Yqq2eV8.avif", "nJqbNOB3n379GdrTYizLPKo.webp", "b6VlralI9Wgykbm77IQm9CA9tQ.webp",
-    ],
+    storyMedia: goodMoveStoryMedia,
+    gallery: goodMoveGallery,
   },
   {
     slug: "poplar-coffee-table",
@@ -72,6 +76,46 @@ export const furnitureProjects = [
       "When all was said and done, the chairs felt sturdy and the chrome was shining. They no longer carried that familiar musty smell, and I got to use them without fear of falling through to the floor :)",
     ],
     gallery: ["Wdosdr7oHDLrdI8bRQigJrh8Eo8.webp", "Xzi1I9bZ4X6MiYu11a3gF9vCROE.webp", "cU0XJ5rV2qLyjfEd8c7V4lmFyfg.webp", "diUtkJ1WWIYgOPXdgJEkELY8JyE.webp", "uULttH5cyH1Zg6XLxoDN4S5DG1U.webp"],
+  },
+];
+
+export const interiorProjects = [
+  {
+    slug: "good-move-lobby",
+    assetSlug: "good-move-floating-shelves",
+    title: "Good Move Lobby",
+    projectType: "Commercial / Custom Millwork",
+    role: "Design, Fabrication, Installation",
+    client: "Good Move",
+    location: "Brooklyn, NY",
+    year: "2026",
+    cover: "/assets/images/zjZA9ufh4497ioV8Yqq2eV8.avif",
+    paragraphs: [
+      "At Good Move, a Brooklyn movement studio, the lobby shifts from a quiet place to settle before class to a lively gathering space afterward. Its warm clay tones, curved forms, and conversation pit encourage guests to linger.",
+      "The client wanted to turn an unused lobby wall into a place to display books and share the ideas behind the studio’s practice. I designed, built, and installed four floating shelves that fit the room’s existing character and give the studio’s book collection a permanent home.",
+      "The studio’s existing colors and curves informed the shelves’ rounded edges and painted finish. I considered their placement alongside how guests would reach for books and use the surrounding seating, balancing book access with clearance for seated guests and reserving the upper shelves for display.",
+      "Each shelf is shallow enough to keep the circulation path open, with a raised front lip that allows books to face outward. The warm painted finish lets the shelves recede into the wall so the collection remains the focus.",
+    ],
+    storyMedia: goodMoveStoryMedia,
+    gallery: goodMoveGallery,
+  },
+  {
+    slug: "greenpoint-railroad-kitchen",
+    title: "Greenpoint Railroad Kitchen",
+    projectType: "Residential Redesign",
+    role: "Design, Fabrication, Installation",
+    location: "Brooklyn, NY",
+    year: "2025",
+    cover: null,
+    imageStatus: "Project photography coming soon",
+    paragraphs: [
+      "In a small Greenpoint railroad apartment, limited counter space made cooking difficult, while cool-toned cabinets and bright overhead lighting left the kitchen feeling unsettled.",
+      "The client wanted more room to prepare meals and sit down to dinner without making major investments. I reworked the layout, built a slim plywood island, updated the cabinet finish, and introduced softer lighting and furnishings to make the narrow space more comfortable and functional.",
+      "A custom island introduced another surface for cooking and eating while preserving the kitchen’s circulation. I sized it so stools could tuck underneath and the walkway would remain clear.",
+      "I chose pale plywood for the island and a champagne-toned cabinet finish to bring brighter, warmer tones into the room without replacing the existing cabinetry. A black freestanding cabinet extends the counter and creates a dedicated coffee zone near the sink.",
+      "Curved pendant shades soften the room’s straight lines, while warm mirrored bulbs reduce direct glare when seated. A teal woven runner adds color and texture and connects the new material palette across the length of the kitchen.",
+    ],
+    gallery: [],
   },
 ];
 

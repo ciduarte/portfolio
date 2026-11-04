@@ -49,8 +49,10 @@ main { margin-left: 292px; width: calc(100% - 312px); min-height: 75vh; padding-
 .listing-page { width: 100%; }
 .listing-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 20px; margin-top: 64px; }
 .listing-card img { aspect-ratio: 1.687 / 1; object-fit: cover; }
+.listing-card-placeholder { aspect-ratio: 1.687 / 1; display: grid; place-items: center; padding: 24px; background: #f1eee7; color: var(--gray); text-align: center; font: italic 500 14px/1.4 Teachers, sans-serif; }
 .listing-card h2 { margin: 14px 0 0; color: var(--gray); font: 500 18px/1.2 "Space Grotesk", sans-serif; }
 .listing-card:hover h2, .listing-card:focus-visible h2 { color: var(--red); }
+.listing-card:hover .listing-card-placeholder, .listing-card:focus-visible .listing-card-placeholder { color: var(--red); }
 .project-detail { display: grid; grid-template-columns: 222px minmax(0, 1fr); gap: 0 20px; width: 100%; }
 .back-link { grid-column: 1 / -1; width: max-content; color: var(--red); font: 500 12px/1.2 "Space Grotesk", sans-serif; text-transform: uppercase; }
 .project-meta { grid-column: 1; margin-top: 60px; }
@@ -59,6 +61,7 @@ main { margin-left: 292px; width: calc(100% - 312px); min-height: 75vh; padding-
 .project-meta h1, .project-meta p { margin: 4px 0 0; color: var(--yellow); font: 500 18px/1.4 "Space Grotesk", sans-serif; }
 .project-body { grid-column: 2; margin-top: 59px; min-width: 0; }
 .project-hero { aspect-ratio: 16 / 9; object-fit: cover; }
+.project-hero-placeholder { aspect-ratio: 16 / 9; display: grid; place-items: center; padding: 32px; background: #f1eee7; color: var(--gray); text-align: center; font: italic 500 16px/1.4 Teachers, sans-serif; }
 .project-copy { margin-top: 28px; color: var(--gray); font: 500 16px/1.6 Teachers, sans-serif; letter-spacing: -.32px; }
 .project-copy p { margin: 0; }
 .project-story-block + .project-story-block { margin-top: 20px; }

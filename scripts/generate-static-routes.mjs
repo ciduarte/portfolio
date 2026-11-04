@@ -4,7 +4,7 @@ import { dirname, join } from "node:path";
 const routes = [
   "design-dev",
   "furniture",
-  "projects",
+  "interiors",
   "35mm",
   "about",
   "contact",
@@ -12,6 +12,8 @@ const routes = [
   "furniture/furniture-projects/poplar-coffee-table",
   "furniture/furniture-projects/hand-built-shelf-risers",
   "furniture/furniture-projects/cane-replacement-chrome-restoration",
+  "interiors/good-move-lobby",
+  "interiors/greenpoint-railroad-kitchen",
 ];
 
 await Promise.all(routes.map(async (route) => {
