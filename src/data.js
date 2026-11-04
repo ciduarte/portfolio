@@ -22,7 +22,7 @@ export const furnitureProjects = [
     title: "Custom Floating Shelves",
     role: "Design, Fabricate, Install",
     client: "Good Move",
-    cover: "/assets/images/zjZA9ufh4497ioV8Yqq2eV8.avif",
+    cover: "/assets/projects/good-move-floating-shelves/RuqniP7HTyi1ASs3bIGqA2Ljk.webp",
     paragraphs: [
       "Good Move is a Brooklyn movement studio offering dance, mindful fitness, and somatic classes. While working at the studio and helping with upkeep, I was approached by the owner about creating shelves for the lobby. She had gathered inspiration for a book display where guests could explore the ideas behind the studio’s practice before and after class. I developed that starting point into four custom floating shelves, taking the project from initial sketches through fabrication, painting, and installation.",
       "The owner originally wanted the shelves placed above the lobby’s conversation pit. I proposed moving the shelves to the adjacent wall, where guests could browse without reaching across the seating area. Above the existing bench, the arrangement needed to leave comfortable clearance for anyone seated below while keeping the lower shelves accessible. The upper shelves would serve primarily as display space.",

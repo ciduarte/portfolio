@@ -7,7 +7,6 @@ const routes = [
   "interiors",
   "35mm",
   "about",
-  "contact",
   "furniture/furniture-projects/good-move-floating-shelves",
   "furniture/furniture-projects/poplar-coffee-table",
   "furniture/furniture-projects/hand-built-shelf-risers",

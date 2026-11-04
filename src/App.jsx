@@ -43,7 +43,7 @@ function Header({ pathname }) {
   return <>
     <header className="site-header"><Link href="/" className="wordmark" aria-label="Carla Inacio Duarte, home">Carla Inacio Duarte</Link><button className="menu-button" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls="mobile-menu" aria-label={open ? "Close navigation" : "Open navigation"}><span aria-hidden="true">{open ? "×" : "≡"}</span></button></header>
     <nav className="side-nav" aria-label="Primary navigation"><div className="desktop-wordmark-bar"><Link href="/" className="wordmark" aria-label="Carla Inacio Duarte, home">Carla Inacio Duarte</Link></div><div className="nav-links">{navItems.map(([label, href]) => <Link key={href} href={href} className={active(href) ? "active" : ""}>{label}</Link>)}</div></nav>
-    <div id="mobile-menu" className={`mobile-menu ${open ? "open" : ""}`} aria-hidden={!open}><nav aria-label="Mobile navigation">{navItems.map(([label, href]) => <Link key={href} href={href} onClick={() => setOpen(false)}>{label}</Link>)}<Link href="/about" onClick={() => setOpen(false)}>About</Link><Link href="/contact" onClick={() => setOpen(false)}>Contact</Link></nav></div>
+    <div id="mobile-menu" className={`mobile-menu ${open ? "open" : ""}`} aria-hidden={!open}><nav aria-label="Mobile navigation">{navItems.map(([label, href]) => <Link key={href} href={href} onClick={() => setOpen(false)}>{label}</Link>)}<Link href="/about" onClick={() => setOpen(false)}>About</Link></nav></div>
   </>;
 }
 
@@ -54,6 +54,7 @@ function Footer() {
 function Home() {
   return <>
     <section className="intro reveal"><img src={assetFor("/assets/images/LBz71fj98oepR7MFwTg7q5VikU.avif")} alt="Portrait of Carla Inacio Duarte" /><div className="intro-copy"><p>based in Brooklyn, NY</p><p>uncovering how many pies my fingers can fit into</p><p>stay tuned</p><p>—</p></div></section>
+    <section className="home-contact reveal"><p>Want to work together? Email <a href="mailto:cinacioduarte@gmail.com">cinacioduarte@gmail.com</a></p></section>
     <section className="home-index home-furniture reveal"><h1 className="index-label">Recent Furniture Projects</h1><div className="furniture-list">{furnitureProjects.map((project) => <Link href={`/furniture/furniture-projects/${project.slug}`} className="furniture-row" key={project.slug}><img src={assetFor(project.cover)} alt="" /><span>{project.title}</span></Link>)}</div></section>
     <section className="home-index home-photography reveal"><h2 className="index-label">Recent Film Photography</h2><div className="photo-collections">{recentPhotography.map(([title, rows]) => <Link href={`/35mm#${sectionIdFor(title)}`} className="photo-collection" key={title}><span className="collection-title">{title}</span><div className="photo-rows">{rows.map((row, index) => <div className="photo-row" key={index}>{row.map((image) => <img src={assetFor(`/assets/images/${image}.avif`)} alt={`${title} film photograph`} key={image} />)}</div>)}</div></Link>)}</div></section>
   </>;
@@ -124,19 +125,6 @@ function AboutPage() {
   return <section className="simple-page about-page reveal"><h1 className="page-eyebrow">About</h1><div className="rule" /><div className="about-content"><img src={assetFor("/assets/images/LBz71fj98oepR7MFwTg7q5VikU.avif")} alt="Portrait of Carla Inacio Duarte" /><div><p>Carla Inacio Duarte</p><p>Raised in New Hampshire</p><p>Based in Brooklyn, NY</p><p className="dash">—</p></div></div></section>;
 }
 
-function ContactPage() {
-  const [status, setStatus] = useState("");
-  const endpoint = import.meta.env.VITE_CONTACT_ENDPOINT;
-  const submit = async (event) => {
-    event.preventDefault();
-    if (!endpoint) { setStatus("This form needs a VITE_CONTACT_ENDPOINT before it can deliver messages."); return; }
-    setStatus("Sending…");
-    try { const response = await fetch(endpoint, { method: "POST", body: new FormData(event.currentTarget), headers: { Accept: "application/json" } }); if (!response.ok) throw new Error("Request failed"); event.currentTarget.reset(); setStatus("Thanks—your message has been sent."); }
-    catch { setStatus("The message could not be sent. Please try again shortly."); }
-  };
-  return <section className="simple-page contact-page reveal"><h1 className="page-eyebrow">Contact</h1><div className="rule" /><h2>Let’s collaborate!</h2><form onSubmit={submit}><label>Name<input name="name" placeholder="Jane Smith" autoComplete="name" required /></label><label>Email<input type="email" name="email" placeholder="jane@framer.com" autoComplete="email" required /></label><label>Message<textarea name="message" placeholder="Your message" required /></label><button type="submit">Send Message</button><p className="form-status" aria-live="polite">{status}</p></form></section>;
-}
-
 function Placeholder({ title }) { return <section className="listing-page placeholder reveal"><h1 className="page-eyebrow red">{title}</h1><p>Projects incoming…</p></section>; }
 function NotFound() { return <section className="not-found reveal"><h1>Page not found.</h1><p>The page no longer exists or has moved.</p><Link href="/">Back to Home</Link></section>; }
 
@@ -147,7 +135,6 @@ function resolvePage(pathname) {
   if (pathname === "/furniture") return { page: <FurniturePage />, title: "Furniture Projects" };
   if (pathname === "/35mm") return { page: <PhotographyPage />, title: "35mm Film Photography" };
   if (pathname === "/about") return { page: <AboutPage />, title: "About" };
-  if (pathname === "/contact") return { page: <ContactPage />, title: "Contact" };
   const detail = pathname.match(/^\/furniture\/furniture-projects\/([^/]+)\/?$/);
   if (detail) { const project = furnitureProjects.find((item) => item.slug === detail[1]); if (project) return { page: <ProjectDetail project={project} />, title: project.title }; }
   const interiorDetail = pathname.match(/^\/interiors\/([^/]+)\/?$/);
