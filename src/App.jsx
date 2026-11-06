@@ -58,7 +58,7 @@ function HomeProjectSection({ title, projects, projectHref, headingAs = "h2" }) 
 
 function Home() {
   return <>
-    <section className="intro reveal"><img src={assetFor("/assets/images/LBz71fj98oepR7MFwTg7q5VikU.avif")} alt="Portrait of Carla Inacio Duarte" /><div className="intro-copy"><p>based in Brooklyn, NY</p><p>uncovering how many pies my fingers can fit into</p><p>stay tuned</p><p>—</p></div></section>
+    <section className="intro reveal"><img src={assetFor("/assets/images/LBz71fj98oepR7MFwTg7q5VikU.avif")} alt="Portrait of Carla Inacio Duarte" /><div className="intro-copy"><p>based in Brooklyn, NY</p><p>interior and furniture design</p><p>prev. software engineer</p><p>—</p></div></section>
     <section className="home-contact reveal"><p>want to work together? email <a href="mailto:cinacioduarte@gmail.com">cinacioduarte@gmail.com</a></p></section>
     <HomeProjectSection title="Recent Interior Projects" projects={interiorProjects} projectHref={(project) => `/interiors/${project.slug}`} headingAs="h1" />
     <HomeProjectSection title="Recent Furniture Projects" projects={furnitureProjects} projectHref={(project) => `/furniture/furniture-projects/${project.slug}`} />
