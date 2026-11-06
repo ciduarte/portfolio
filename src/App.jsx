@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { furnitureProjects, interiorProjects, photographyCollections } from "./data";
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
-const navItems = [["Home", "/"], ["Furniture", "/furniture"], ["Interiors", "/interiors"], ["Photography", "/35mm"]];
+const navItems = [["Home", "/"], ["Furniture", "/furniture"], ["Interiors", "/interiors"], ["Photography", "/35mm"], ["About", "/about"]];
 
 const recentPhotography = [
   ["Vietnam '26", [["ZjzF3mtMv4dMPrddvFxzVBjFQo", "9ENLrM6gzcP56u6GaHv4k5kDCU8", "i4oMSXKWesJc6brr8UVsMb60tk", "0IaI8gQ0uNaB9f75imhGpK7Zy5I", "M29ovJNaCArKNQIOH7dzZXbfE", "pmUOaCKOvW2vvSdTL2TU7J3FfsA"]]],
@@ -43,7 +43,7 @@ function Header({ pathname }) {
   return <>
     <header className="site-header"><Link href="/" className="wordmark" aria-label="Carla Inacio Duarte, home">Carla Inacio Duarte</Link><button className="menu-button" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls="mobile-menu" aria-label={open ? "Close navigation" : "Open navigation"}><span aria-hidden="true">{open ? "×" : "☰"}</span></button></header>
     <nav className="side-nav" aria-label="Primary navigation"><div className="desktop-wordmark-bar"><Link href="/" className="wordmark" aria-label="Carla Inacio Duarte, home">Carla Inacio Duarte</Link></div><div className="nav-links">{navItems.map(([label, href]) => <Link key={href} href={href} className={active(href) ? "active" : ""}>{label}</Link>)}</div></nav>
-    <div id="mobile-menu" className={`mobile-menu ${open ? "open" : ""}`} aria-hidden={!open}><nav aria-label="Mobile navigation">{navItems.map(([label, href]) => <Link key={href} href={href} onClick={() => setOpen(false)}>{label}</Link>)}<Link href="/about" onClick={() => setOpen(false)}>About</Link></nav></div>
+    <div id="mobile-menu" className={`mobile-menu ${open ? "open" : ""}`} aria-hidden={!open}><nav aria-label="Mobile navigation">{navItems.map(([label, href]) => <Link key={href} href={href} onClick={() => setOpen(false)}>{label}</Link>)}</nav></div>
   </>;
 }
 
@@ -128,7 +128,7 @@ function PhotographyPage() {
 }
 
 function AboutPage() {
-  return <section className="simple-page about-page reveal"><h1 className="page-eyebrow">About</h1><div className="rule" /><div className="about-content"><img src={assetFor("/assets/images/LBz71fj98oepR7MFwTg7q5VikU.avif")} alt="Portrait of Carla Inacio Duarte" /><div><p>Carla Inacio Duarte</p><p>Raised in New Hampshire</p><p>Based in Brooklyn, NY</p><p className="dash">—</p></div></div></section>;
+  return <section className="simple-page about-page reveal"><h1 className="page-eyebrow">About</h1><div className="about-copy"><p>Carla Duarte is a Brooklyn-based designer working across interiors, woodworking, furniture restoration, and photography. Her background in software engineering, UX, web accessibility, and design systems sharpened her eye for detail and shaped her appreciation for environments that feel intuitive and accessible.</p><p>Originally from New Hampshire, Carla grew up around colonial architecture and developed a lasting appreciation for history, craftsmanship, and nostalgia. Drawing on her Brazilian-American upbringing, she values personal history, material reuse, and the objects people choose to keep. Her style has since grown more eclectic, bringing the old and new, familiar and unexpected, into thoughtful physical spaces.</p></div></section>;
 }
 
 function Placeholder({ title }) { return <section className="listing-page placeholder reveal"><h1 className="page-eyebrow red">{title}</h1><p>Projects incoming…</p></section>; }

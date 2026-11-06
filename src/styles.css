@@ -15,7 +15,7 @@ img { display: block; width: 100%; }
 .side-nav { position: absolute; top: 20px; left: 20px; width: 252px; display: flex; flex-direction: column; z-index: 20; }
 .desktop-wordmark-bar { position: static; padding: 0; background: transparent; }
 .wordmark { width: max-content; display: inline-block; white-space: nowrap; color: var(--green); font: 400 18px/1.2 Tachyo, sans-serif; }
-.nav-links { position: fixed; left: 20px; top: calc(50% - 83px); width: 252px; display: flex; flex-direction: column; gap: 10px; }
+.nav-links { position: fixed; left: 20px; top: 50%; width: 252px; display: flex; flex-direction: column; gap: 10px; transform: translateY(-50%); }
 .nav-links a { color: var(--gray); font: 600 18px/1.4 "Cal Sans", sans-serif; transition: color .2s ease; }
 .nav-links a:hover, .nav-links a.active { color: var(--yellow); }
 .mobile-menu { display: none; }
@@ -100,11 +100,9 @@ main { margin-left: 292px; width: calc(100% - 312px); min-height: 75vh; padding-
 .lightbox button { border: 0; padding: 10px; color: white; background: transparent; cursor: pointer; font-size: 36px; }
 .lightbox-close { position: absolute; top: 6px; right: 10px; }
 .simple-page { width: 100%; }
-.rule { width: 100%; height: 1px; margin-top: 48px; background: #76767f; }
-.about-content { display: grid; grid-template-columns: 115px 417px; gap: 20px; margin-top: 24px; }
-.about-content img { width: 115px; height: 132px; object-fit: cover; }
-.about-content p { margin: 0; color: var(--light-gray); font: italic 500 16px/1.6 Teachers, sans-serif; }
-.about-content .dash { margin-top: 26px; }
+.about-copy { max-width: 680px; margin-top: 48px; color: var(--gray); font: 500 20px/1.55 Teachers, sans-serif; letter-spacing: -.2px; }
+.about-copy p { margin: 0; }
+.about-copy p + p { margin-top: 28px; }
 .placeholder p { margin: 64px 0 0; color: var(--gray); font: 500 16px/1.4 Teachers, sans-serif; }
 .not-found h1 { margin: 0 0 12px; color: var(--red); font: 500 36px/1.1 "Space Grotesk", sans-serif; }
 .not-found p { color: var(--gray); }
@@ -167,10 +165,8 @@ footer .footer-linkedin:hover, footer .footer-linkedin:focus-visible { color: va
   .gallery-grid button.portrait { grid-column: span 3; }
   .lightbox { inset: 0; grid-template-columns: 40px minmax(0, 1fr) 40px; }
   .lightbox img { max-width: calc(100vw - 80px); max-height: calc(100vh - 80px); }
-  .rule { margin-top: 32px; }
-  .about-content { grid-template-columns: 98px minmax(0, 1fr); gap: 20px; margin-top: 20px; }
-  .about-content img { width: 98px; height: 112px; }
-  .about-content p { font-size: 14px; }
+  .about-copy { margin-top: 32px; font-size: 18px; }
+  .about-copy p + p { margin-top: 24px; }
   footer { margin: 96px auto; width: max-content; max-width: calc(100% - 32px); align-items: center; flex-direction: row; gap: 8px; font-size: 11px; }
 }
 @media (max-width: 480px) {
