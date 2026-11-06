@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { furnitureProjects, interiorProjects, photographyCollections } from "./data";
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
-const navItems = [["Home", "/"], ["Design & Dev", "/design-dev"], ["Furniture", "/furniture"], ["Interiors", "/interiors"], ["Photography", "/35mm"]];
+const navItems = [["Home", "/"], ["Furniture", "/furniture"], ["Interiors", "/interiors"], ["Photography", "/35mm"]];
 
 const recentPhotography = [
   ["Vietnam '26", [["ZjzF3mtMv4dMPrddvFxzVBjFQo", "9ENLrM6gzcP56u6GaHv4k5kDCU8", "i4oMSXKWesJc6brr8UVsMb60tk", "0IaI8gQ0uNaB9f75imhGpK7Zy5I", "M29ovJNaCArKNQIOH7dzZXbfE", "pmUOaCKOvW2vvSdTL2TU7J3FfsA"]]],
